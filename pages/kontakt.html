@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Kontakt - KP-WELD | Šamorín, Bratislavská 2558</title>
+
+    
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="../css/base.css?v=2.0">
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="../css/components/header.css?v=2.0">
+    <link rel="stylesheet" href="../css/components/footer.css?v=2.0">
+    <link rel="stylesheet" href="../css/components/hero.css?v=2.0">
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="../css/kontakt.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+   
+</head>
+<body>
+    <!-- Navigation Container -->
+    <div id="navigation-container"></div>
+    
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg">
+            <img src="../sources/brany/steel-construction-1.jpg" alt="KP-WELD kontakt">
+        </div>
+        <div class="contact-hero-content">
+            <div class="container">
+                <h1 class="contact-hero-title">Kontakt</h1>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-marker">
+                <div class="marker-icon">▲</div>
+            </div>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.1234567890!2d17.3159!3d48.1247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBratislavsk%C3%A1+2558%2C+931+01+Samor%C3%ADn!5e0!3m2!1sen!2ssk!4v1640995200000!5m2!1sen!2ssk" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Contact Content Section -->
+    <section class="contact-content">
+        <div class="contact-layout">
+            <!-- Contact Info Left -->
+            <div class="contact-info-left">
+                <h2>Máte otázky?</h2>
+                <p class="contact-subtitle">Kontaktujte náš priatel'ský tím.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <strong>Bratislavská 2558,</strong><br>
+                        <strong>Šamorín,</strong><br>
+                        <strong>93101</strong>
+                    </div>
+                    
+                    <div class="contact-detail-item">
+                        <strong>T:</strong> <a href="tel:+421908383815">+421 908 383 815</a>
+                    </div>
+                    
+                    <div class="contact-detail-item">
+                        <strong>E:</strong> <a href="mailto:kpweldsro@gmail.com">kpweldsro@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/kpweldsro" class="social-icon-facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:kpweldsro@gmail.com" class="social-icon-email">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="company-registration">
+                    <h3>Obchodné údaje</h3>
+                    <div class="registration-details">
+                        <p><strong>IČO:</strong> 53126432</p>
+                        <p><strong>DIČ:</strong> 2121273077</p>
+                        <p><strong>IČ DPH:</strong> SK2121273077, podľa §4, registrácia od 22.7.2020</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form Right -->
+            <div class="contact-form-right">
+                <h3>Napíšte nám o vašom projekte</h3>
+                <form class="contact-form-new" id="contact-form">
+                    <input type="text" placeholder="Vaše meno" required>
+                    <input type="email" placeholder="Váš email" required>
+                    <input type="tel" placeholder="Váš telefón">
+                    <textarea placeholder="Vaša správa" rows="6" required></textarea>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="privacy-checkbox" required>
+                        <label for="privacy-checkbox">Týmto formulárom súhlasite s našimi podmienkami a <a href="#" onclick="openPrivacyPopup(); return false;" class="privacy-link">ochranou osobných údajov</a>.</label>
+                    </div>
+                    <button type="submit" class="form-submit-btn">Odoslať</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Main JavaScript with error handling -->
+    <script type="module" src="../js/main.js?v=2.0" onerror="console.log('ES6 modules failed to load')"></script>
+    <!-- Fallback script will always run due to CORS when serving from file:// -->
+    <script src="../js/fallback.js?v=2.0"></script>
+</body>
+</html>
