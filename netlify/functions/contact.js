@@ -92,7 +92,15 @@ ${new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' })}
       `.trim(),
     };
 
+    // Log environment variables (without exposing API key)
+    console.log('Environment check:', {
+      hasApiKey: !!process.env.SMTP2GO_API_KEY,
+      fromEmail: process.env.SMTP2GO_FROM_EMAIL,
+      businessEmail: process.env.BUSINESS_EMAIL
+    });
+
     // Send email using SMTP2GO API
+    console.log('Sending email to SMTP2GO...');
     const response = await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
       headers: {
@@ -102,6 +110,7 @@ ${new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' })}
     });
 
     const result = await response.json();
+    console.log('SMTP2GO Response:', result);
 
     if (result.data && result.data.succeeded > 0) {
       // Success response
