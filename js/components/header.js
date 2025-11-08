@@ -24,24 +24,29 @@ function loadNavigation() {
     // Set navigation paths based on current location
     let basePath, pagesPath;
     
+    let homeLink;
+    
     if (isInServicePage) {
         // We're in /pages/service-page/
-        basePath = '../../';  // To reach root for index.html
+        basePath = '../../';  // To reach root
         pagesPath = '../../'; // To reach root for clean URLs
+        homeLink = '../../index.html';
     } else if (isInPagesDir) {
         // We're in /pages/
-        basePath = '../';     // To reach root for index.html
+        basePath = '../';     // To reach root
         pagesPath = '../';    // To reach root for clean URLs
+        homeLink = '../index.html';
     } else {
         // We're in root directory
-        basePath = '';        // index.html is in same directory
+        basePath = '';        // Same directory
         pagesPath = '';       // Clean URLs at root level
+        homeLink = '/';
     }
     
     console.log('Resolved paths:', {
         basePath,
         pagesPath,
-        homeLink: `${basePath}`,
+        homeLink: homeLink,
         produktyLink: `${pagesPath}produkty-sluzby`
     });
     
@@ -55,12 +60,12 @@ function loadNavigation() {
         <nav class="navbar navbar-transparent">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="${basePath}" class="logo-link logo-text">
+                    <a href="${homeLink}" class="logo-link logo-text">
                         KP WELD
                     </a>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="${basePath}" class="nav-link">Domov</a></li>
+                    <li><a href="${homeLink}" class="nav-link">Domov</a></li>
                     <li><a href="${pagesPath}produkty-sluzby" class="nav-link">Produkty a služby</a></li>
                     <li><a href="${pagesPath}o-nas" class="nav-link">O nás</a></li>
                     <li><a href="${pagesPath}referencie" class="nav-link">Referencie</a></li>
@@ -82,12 +87,12 @@ function loadNavigation() {
         <div class="mobile-sidebar">
             <div class="mobile-sidebar-header">
                 <div class="mobile-logo">
-                    <a href="${basePath}" class="mobile-logo-link">KP WELD</a>
+                    <a href="${homeLink}" class="mobile-logo-link">KP WELD</a>
                 </div>
                 <button class="mobile-close-btn" aria-label="Zavrieť menu">✕</button>
             </div>
             <ul class="mobile-nav-menu">
-                <li><a href="${basePath}" class="mobile-nav-link">Domov</a></li>
+                <li><a href="${homeLink}" class="mobile-nav-link">Domov</a></li>
                 <li><a href="${pagesPath}produkty-sluzby" class="mobile-nav-link">Produkty a služby</a></li>
                 <li><a href="${pagesPath}o-nas" class="mobile-nav-link">O nás</a></li>
                 <li><a href="${pagesPath}referencie" class="mobile-nav-link">Referencie</a></li>
@@ -116,7 +121,7 @@ function setActiveNavLink() {
         const href = link.getAttribute('href');
         
         if (currentPage === '/' || currentPage.includes('index.html')) {
-            if (href === '' || href === '/' || href.includes('index.html')) {
+            if (href === '/' || href.endsWith('index.html')) {
                 link.classList.add('active');
             }
         } else if (currentPage.includes(href.split('/').pop())) {

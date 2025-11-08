@@ -41,20 +41,23 @@ function loadFooter() {
     const isInPagesDir = currentPath.includes('/pages/') && !isInServicePage;
     
     // Set navigation paths based on current location
-    let basePath, pagesPath;
+    let basePath, pagesPath, homeLink;
     
     if (isInServicePage) {
         // We're in /pages/service-page/ - need different paths for different targets
-        basePath = '../../';  // To reach root for index.html
+        basePath = '../../';  // To reach root
         pagesPath = '../../'; // To reach root for clean URLs
+        homeLink = '../../index.html';
     } else if (isInPagesDir) {
         // We're in /pages/ - stay in pages directory for other pages
-        basePath = '../';     // To reach root for index.html
+        basePath = '../';     // To reach root
         pagesPath = '../';    // To reach root for clean URLs
+        homeLink = '../index.html';
     } else {
         // We're in root directory
         basePath = '';
         pagesPath = '';       // Clean URLs at root level
+        homeLink = '/';
     }
     
     const footerHTML = `
@@ -85,7 +88,7 @@ function loadFooter() {
                         <span class="logo-triangle">▲</span>
                     </div>
                     <div class="footer-nav-col">
-                        <a href="${basePath}">Domov</a>
+                        <a href="${homeLink}">Domov</a>
                         <a href="${pagesPath}o-nas">O nás</a>
                         <a href="${pagesPath}produkty-sluzby">Služby</a>
                     </div>
