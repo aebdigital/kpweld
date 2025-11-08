@@ -15,7 +15,7 @@ In your Netlify dashboard, go to **Site Settings → Environment Variables** and
 ```bash
 SMTP2GO_API_KEY=api-B62EC962A1534F7AB4C314F802E5FEE0
 SMTP2GO_FROM_EMAIL=noreply@kpweld.sk
-BUSINESS_EMAIL=alexander.hidv@gmail.com
+BUSINESS_EMAIL=kpweldsro@gmail.com
 ```
 
 ### 3. **Install Dependencies**

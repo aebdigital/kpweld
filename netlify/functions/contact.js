@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
     // Prepare email data for SMTP2GO API
     const emailData = {
       api_key: process.env.SMTP2GO_API_KEY,
-      to: [process.env.BUSINESS_EMAIL || 'alexander.hidv@gmail.com'],
+      to: [process.env.BUSINESS_EMAIL || 'kpweldsro@gmail.com'],
       sender: process.env.SMTP2GO_FROM_EMAIL || 'noreply@kpweld.sk',
       subject: `🔔 Nový kontakt z webu KP-WELD - ${name}`,
       html_body: `
