@@ -289,12 +289,23 @@ function setActiveNavLink() {
         link.classList.remove('active');
         const href = link.getAttribute('href');
         
-        if (currentPage === '/' || currentPage.includes('index.html')) {
-            if (href === '/' || href.endsWith('index.html')) {
+        // Check if this is the home link
+        const isHomeLink = href === '/' || href.endsWith('index.html');
+        
+        // Check if we're on the homepage
+        const isHomePage = currentPage === '/' || currentPage.endsWith('index.html');
+        
+        if (isHomePage && isHomeLink) {
+            // On homepage, activate home link
+            link.classList.add('active');
+        } else if (!isHomePage && !isHomeLink) {
+            // On subpage, check if the link matches the current page
+            const linkPath = href.split('/').pop().replace('.html', '');
+            const currentPageName = currentPage.split('/').pop().replace('.html', '');
+            
+            if (linkPath && currentPageName && linkPath === currentPageName) {
                 link.classList.add('active');
             }
-        } else if (currentPage.includes(href.split('/').pop())) {
-            link.classList.add('active');
         }
     });
 }
