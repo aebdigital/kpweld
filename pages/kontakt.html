@@ -162,15 +162,19 @@
             <div class="contact-form-right">
                 <h3>Napíšte nám o vašom projekte</h3>
                 <form class="contact-form-new" id="contact-form">
-                    <input type="text" placeholder="Vaše meno" required>
-                    <input type="email" placeholder="Váš email" required>
-                    <input type="tel" placeholder="Váš telefón">
-                    <textarea placeholder="Vaša správa" rows="6" required></textarea>
+                    <input type="text" name="name" placeholder="Vaše meno" required>
+                    <input type="email" name="email" placeholder="Váš email" required>
+                    <input type="tel" name="phone" placeholder="Váš telefón">
+                    <textarea name="message" placeholder="Vaša správa" rows="6" required></textarea>
                     <div class="form-checkbox">
                         <input type="checkbox" id="privacy-checkbox" required>
                         <label for="privacy-checkbox">Týmto formulárom súhlasite s našimi podmienkami a <a href="#" onclick="openPrivacyPopup(); return false;" class="privacy-link">ochranou osobných údajov</a>.</label>
                     </div>
-                    <button type="submit" class="form-submit-btn">Odoslať</button>
+                    <button type="submit" class="form-submit-btn">
+                        <span class="btn-text">Odoslať</span>
+                        <span class="btn-loading" style="display: none;">Odosiela sa...</span>
+                    </button>
+                    <div id="form-message" class="form-message" style="display: none;"></div>
                 </form>
             </div>
         </div>

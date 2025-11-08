@@ -1,0 +1,31 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/produkty-sluzby"
+  to = "/pages/produkty-sluzby.html"
+  status = 200
+
+[[redirects]]
+  from = "/kontakt"
+  to = "/pages/kontakt.html"
+  status = 200
+
+[[redirects]]
+  from = "/o-nas"
+  to = "/pages/o-nas.html"
+  status = 200
+
+[[redirects]]
+  from = "/referencie"
+  to = "/pages/referencie.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

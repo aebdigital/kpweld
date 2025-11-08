@@ -9,21 +9,65 @@ export function initForms() {
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            const privacyCheckbox = document.getElementById('privacy-checkbox');
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
+            const privacyCheckbox = document.getElementById('privacy-checkbox');
+            const submitBtn = contactForm.querySelector('.form-submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            const messageDiv = document.getElementById('form-message');
+            
+            // Check privacy checkbox
             if (privacyCheckbox && !privacyCheckbox.checked) {
-                e.preventDefault();
                 showFormMessage('Musíte súhlasiť s podmienkami ochrany osobných údajov pred odoslaním formulára.', 'error');
                 return false;
             }
             
-            // Additional validation can be added here
-            if (validateContactForm()) {
-                showFormMessage('Formulár bol úspešne odoslaný. Čoskoro vás budeme kontaktovať.', 'success');
-                // Form submission logic here
-            } else {
-                e.preventDefault();
+            // Validate form
+            if (!validateContactForm()) {
+                return false;
+            }
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                message: formData.get('message')
+            };
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            
+            try {
+                const response = await fetch('/.netlify/functions/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showFormMessage(result.message, 'success');
+                    contactForm.reset();
+                } else {
+                    showFormMessage(result.error || 'Nastala chyba pri odosielaní formulára.', 'error');
+                }
+            } catch (error) {
+                console.error('Contact form error:', error);
+                showFormMessage('Nastala chyba pri odosielaní formulára. Skúste to znovu alebo nás kontaktujte priamo na telefóne +421 908 383 815.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
             }
         });
     }
@@ -144,23 +188,35 @@ function clearFieldError(field) {
 }
 
 function showFormMessage(message, type = 'info') {
-    // Remove existing messages
-    const existingMessages = document.querySelectorAll('.form-message');
-    existingMessages.forEach(msg => msg.remove());
-    
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `form-message form-message-${type}`;
-    messageDiv.textContent = message;
-    
-    // Insert at the top of the form
-    const form = document.querySelector('form');
-    if (form) {
-        form.insertBefore(messageDiv, form.firstChild);
+    const messageDiv = document.getElementById('form-message');
+    if (messageDiv) {
+        messageDiv.textContent = message;
+        messageDiv.className = `form-message form-message-${type}`;
+        messageDiv.style.display = 'block';
         
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            messageDiv.remove();
-        }, 5000);
+        // Auto-hide after 8 seconds for success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 8000);
+        }
+    } else {
+        // Fallback: create new message div
+        const existingMessages = document.querySelectorAll('.form-message');
+        existingMessages.forEach(msg => msg.remove());
+        
+        const newMessageDiv = document.createElement('div');
+        newMessageDiv.className = `form-message form-message-${type}`;
+        newMessageDiv.textContent = message;
+        
+        const form = document.querySelector('#contact-form');
+        if (form) {
+            form.appendChild(newMessageDiv);
+            
+            setTimeout(() => {
+                newMessageDiv.remove();
+            }, 8000);
+        }
     }
 }
 
