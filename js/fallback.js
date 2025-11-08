@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Initialize portfolio on references page
-        const isReferencesPage = window.location.pathname.includes('referencie.html');
+        const isReferencesPage = window.location.pathname.includes('referencie');
         if (isReferencesPage) {
             console.log('Initializing portfolio for references page...');
             try {
@@ -193,22 +193,22 @@ function loadNavigation() {
     if (isInServicePage) {
         // We're in /pages/service-page/
         basePath = '../../';  // To reach root for index.html
-        pagesPath = '../';    // To reach /pages/ directory
+        pagesPath = '../../'; // To reach root for clean URLs
     } else if (isInPagesDir) {
         // We're in /pages/
         basePath = '../';     // To reach root for index.html
-        pagesPath = '';       // Other pages are in same directory (just filename.html)
+        pagesPath = '../';    // To reach root for clean URLs
     } else {
         // We're in root directory
         basePath = '';        // index.html is in same directory
-        pagesPath = 'pages/'; // Other pages are in pages/ subdirectory
+        pagesPath = '';       // Clean URLs at root level
     }
     
     console.log('Resolved paths (fallback):', {
         basePath,
         pagesPath,
         homeLink: `${basePath}index.html`,
-        produktyLink: `${pagesPath}produkty-sluzby.html`
+        produktyLink: `${pagesPath}produkty-sluzby`
     });
     
     const navigationHTML = `
@@ -227,10 +227,10 @@ function loadNavigation() {
                 </div>
                 <ul class="nav-menu">
                     <li><a href="${basePath}index.html" class="nav-link">Domov</a></li>
-                    <li><a href="${pagesPath}produkty-sluzby.html" class="nav-link">Produkty a služby</a></li>
-                    <li><a href="${pagesPath}o-nas.html" class="nav-link">O nás</a></li>
-                    <li><a href="${pagesPath}referencie.html" class="nav-link">Referencie</a></li>
-                    <li><a href="${pagesPath}kontakt.html" class="nav-link">Kontakt</a></li>
+                    <li><a href="${pagesPath}produkty-sluzby" class="nav-link">Produkty a služby</a></li>
+                    <li><a href="${pagesPath}o-nas" class="nav-link">O nás</a></li>
+                    <li><a href="${pagesPath}referencie" class="nav-link">Referencie</a></li>
+                    <li><a href="${pagesPath}kontakt" class="nav-link">Kontakt</a></li>
                 </ul>
                 <div class="nav-cta">
                     <a href="tel:+421908383815" class="nav-cta-btn">+421 908 383 815</a>
@@ -254,10 +254,10 @@ function loadNavigation() {
             </div>
             <ul class="mobile-nav-menu">
                 <li><a href="${basePath}index.html" class="mobile-nav-link">Domov</a></li>
-                <li><a href="${pagesPath}produkty-sluzby.html" class="mobile-nav-link">Produkty a služby</a></li>
-                <li><a href="${pagesPath}o-nas.html" class="mobile-nav-link">O nás</a></li>
-                <li><a href="${pagesPath}referencie.html" class="mobile-nav-link">Referencie</a></li>
-                <li><a href="${pagesPath}kontakt.html" class="mobile-nav-link">Kontakt</a></li>
+                <li><a href="${pagesPath}produkty-sluzby" class="mobile-nav-link">Produkty a služby</a></li>
+                <li><a href="${pagesPath}o-nas" class="mobile-nav-link">O nás</a></li>
+                <li><a href="${pagesPath}referencie" class="mobile-nav-link">Referencie</a></li>
+                <li><a href="${pagesPath}kontakt" class="mobile-nav-link">Kontakt</a></li>
             </ul>
             <div class="mobile-cta">
                 <a href="tel:+421908383815" class="mobile-cta-btn">+421 908 383 815</a>
@@ -470,15 +470,15 @@ function loadFooter() {
     if (isInServicePage) {
         // We're in /pages/service-page/
         basePath = '../../';  // To reach root for index.html
-        pagesPath = '../';    // To reach /pages/ directory
+        pagesPath = '../../'; // To reach root for clean URLs
     } else if (isInPagesDir) {
         // We're in /pages/
         basePath = '../';     // To reach root for index.html
-        pagesPath = '';       // Other pages are in same directory (just filename.html)
+        pagesPath = '../';    // To reach root for clean URLs
     } else {
         // We're in root directory
         basePath = '';        // index.html is in same directory
-        pagesPath = 'pages/'; // Other pages are in pages/ subdirectory
+        pagesPath = '';       // Clean URLs at root level
     }
     
     const footerHTML = `
@@ -494,7 +494,7 @@ function loadFooter() {
                         <p>Plánujete výstavbu oceľových konštrukcií, brán, oplotení, schodov alebo zábradlí? Či už máte pripravené presné plány alebo potrebujete pomoc s návrhom a projektovaním, náš skúsený tím zabezpečí kvalitné riešenie na mieru. Od návrhu až po montáž - všetko pod jednou strechou.</p>
                     </div>
                     <div class="footer-cta-link">
-                        <a href="${pagesPath}kontakt.html">Získajte bezplatnú ponuku</a>
+                        <a href="${pagesPath}kontakt">Získajte bezplatnú ponuku</a>
                     </div>
                 </div>
             </div>
@@ -509,12 +509,12 @@ function loadFooter() {
                     </div>
                     <div class="footer-nav-col">
                         <a href="${basePath}index.html">Domov</a>
-                        <a href="${pagesPath}o-nas.html">O nás</a>
-                        <a href="${pagesPath}produkty-sluzby.html">Služby</a>
+                        <a href="${pagesPath}o-nas">O nás</a>
+                        <a href="${pagesPath}produkty-sluzby">Služby</a>
                     </div>
                     <div class="footer-nav-col">
-                        <a href="${pagesPath}kontakt.html">Kontakt</a>
-                        <a href="${pagesPath}referencie.html">Portfólio</a>
+                        <a href="${pagesPath}kontakt">Kontakt</a>
+                        <a href="${pagesPath}referencie">Portfólio</a>
                     </div>
                     <div class="footer-contact">
                         <p>Bratislavská 2558,<br>Šamorín,<br>93101</p>
@@ -554,7 +554,7 @@ function loadFooter() {
                     <p>Tieto Zásady ochrany osobných údajov (ďalej len „Zásady") popisujú, aké osobné údaje spracúvame v súvislosti s používaním našej webovej stránky a kontaktných formulárov.</p>
                     
                     <h3>I. Kontaktný formulár</h3>
-                    <p>Na stránke www.kp-weld.sk prevádzkujeme kontaktný formulár ktorého účelom je umožniť vám:</p>
+                    <p>Na stránke www.kpweld.sk prevádzkujeme kontaktný formulár ktorého účelom je umožniť vám:</p>
                     <p>Položiť otázku k našim produktom a službám<br>
                     Požiadať o cenovú ponuku</p>
                     

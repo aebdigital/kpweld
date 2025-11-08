@@ -27,22 +27,22 @@ function loadNavigation() {
     if (isInServicePage) {
         // We're in /pages/service-page/
         basePath = '../../';  // To reach root for index.html
-        pagesPath = '../';    // To reach /pages/ directory
+        pagesPath = '../../'; // To reach root for clean URLs
     } else if (isInPagesDir) {
         // We're in /pages/
         basePath = '../';     // To reach root for index.html
-        pagesPath = '';       // Other pages are in same directory (just filename.html)
+        pagesPath = '../';    // To reach root for clean URLs
     } else {
         // We're in root directory
         basePath = '';        // index.html is in same directory
-        pagesPath = 'pages/'; // Other pages are in pages/ subdirectory
+        pagesPath = '';       // Clean URLs at root level
     }
     
     console.log('Resolved paths:', {
         basePath,
         pagesPath,
         homeLink: `${basePath}index.html`,
-        produktyLink: `${pagesPath}produkty-sluzby.html`
+        produktyLink: `${pagesPath}produkty-sluzby`
     });
     
     const navigationHTML = `
@@ -61,10 +61,10 @@ function loadNavigation() {
                 </div>
                 <ul class="nav-menu">
                     <li><a href="${basePath}index.html" class="nav-link">Domov</a></li>
-                    <li><a href="${pagesPath}produkty-sluzby.html" class="nav-link">Produkty a služby</a></li>
-                    <li><a href="${pagesPath}o-nas.html" class="nav-link">O nás</a></li>
-                    <li><a href="${pagesPath}referencie.html" class="nav-link">Referencie</a></li>
-                    <li><a href="${pagesPath}kontakt.html" class="nav-link">Kontakt</a></li>
+                    <li><a href="${pagesPath}produkty-sluzby" class="nav-link">Produkty a služby</a></li>
+                    <li><a href="${pagesPath}o-nas" class="nav-link">O nás</a></li>
+                    <li><a href="${pagesPath}referencie" class="nav-link">Referencie</a></li>
+                    <li><a href="${pagesPath}kontakt" class="nav-link">Kontakt</a></li>
                 </ul>
                 <div class="nav-cta">
                     <a href="tel:+421908383815" class="nav-cta-btn">+421 908 383 815</a>
@@ -88,10 +88,10 @@ function loadNavigation() {
             </div>
             <ul class="mobile-nav-menu">
                 <li><a href="${basePath}index.html" class="mobile-nav-link">Domov</a></li>
-                <li><a href="${pagesPath}produkty-sluzby.html" class="mobile-nav-link">Produkty a služby</a></li>
-                <li><a href="${pagesPath}o-nas.html" class="mobile-nav-link">O nás</a></li>
-                <li><a href="${pagesPath}referencie.html" class="mobile-nav-link">Referencie</a></li>
-                <li><a href="${pagesPath}kontakt.html" class="mobile-nav-link">Kontakt</a></li>
+                <li><a href="${pagesPath}produkty-sluzby" class="mobile-nav-link">Produkty a služby</a></li>
+                <li><a href="${pagesPath}o-nas" class="mobile-nav-link">O nás</a></li>
+                <li><a href="${pagesPath}referencie" class="mobile-nav-link">Referencie</a></li>
+                <li><a href="${pagesPath}kontakt" class="mobile-nav-link">Kontakt</a></li>
             </ul>
             <div class="mobile-cta">
                 <a href="tel:+421908383815" class="mobile-cta-btn">+421 908 383 815</a>

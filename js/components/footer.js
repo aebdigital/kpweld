@@ -46,15 +46,15 @@ function loadFooter() {
     if (isInServicePage) {
         // We're in /pages/service-page/ - need different paths for different targets
         basePath = '../../';  // To reach root for index.html
-        pagesPath = '../';    // To reach /pages/ directory (go up one level from service-page)
+        pagesPath = '../../'; // To reach root for clean URLs
     } else if (isInPagesDir) {
         // We're in /pages/ - stay in pages directory for other pages
         basePath = '../';     // To reach root for index.html
-        pagesPath = '';       // Other pages are in same directory
+        pagesPath = '../';    // To reach root for clean URLs
     } else {
         // We're in root directory
         basePath = '';
-        pagesPath = 'pages/';
+        pagesPath = '';       // Clean URLs at root level
     }
     
     const footerHTML = `
@@ -70,7 +70,7 @@ function loadFooter() {
                         <p>Plánujete výstavbu oceľových konštrukcií, brán, oplotení, schodov alebo zábradlí? Či už máte pripravené presné plány alebo potrebujete pomoc s návrhom a projektovaním, náš skúsený tím zabezpečí kvalitné riešenie na mieru. Od návrhu až po montáž - všetko pod jednou strechou.</p>
                     </div>
                     <div class="footer-cta-link">
-                        <a href="${pagesPath}kontakt.html">Získajte bezplatnú ponuku</a>
+                        <a href="${pagesPath}kontakt">Získajte bezplatnú ponuku</a>
                     </div>
                 </div>
             </div>
@@ -86,12 +86,12 @@ function loadFooter() {
                     </div>
                     <div class="footer-nav-col">
                         <a href="${basePath}index.html">Domov</a>
-                        <a href="${pagesPath}o-nas.html">O nás</a>
-                        <a href="${pagesPath}produkty-sluzby.html">Služby</a>
+                        <a href="${pagesPath}o-nas">O nás</a>
+                        <a href="${pagesPath}produkty-sluzby">Služby</a>
                     </div>
                     <div class="footer-nav-col">
-                        <a href="${pagesPath}kontakt.html">Kontakt</a>
-                        <a href="${pagesPath}referencie.html">Portfólio</a>
+                        <a href="${pagesPath}kontakt">Kontakt</a>
+                        <a href="${pagesPath}referencie">Portfólio</a>
                     </div>
                     <div class="footer-contact">
                         <p>Bratislavská 2558,<br>Šamorín,<br>93101</p>
@@ -131,7 +131,7 @@ function loadFooter() {
                     <p>Tieto Zásady ochrany osobných údajov (ďalej len „Zásady") popisujú, aké osobné údaje spracúvame v súvislosti s používaním našej webovej stránky a kontaktných formulárov.</p>
                     
                     <h3>I. Kontaktný formulár</h3>
-                    <p>Na stránke www.kp-weld.sk prevádzkujeme kontaktný formulár ktorého účelom je umožniť vám:</p>
+                    <p>Na stránke www.kpweld.sk prevádzkujeme kontaktný formulár ktorého účelom je umožniť vám:</p>
                     <p>Položiť otázku k našim produktom a službám<br>
                     Požiadať o cenovú ponuku</p>
                     
