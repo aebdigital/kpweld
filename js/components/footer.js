@@ -85,7 +85,7 @@ function loadFooter() {
                         <span class="logo-triangle">▲</span>
                     </div>
                     <div class="footer-nav-col">
-                        <a href="${basePath}index.html">Domov</a>
+                        <a href="${basePath}">Domov</a>
                         <a href="${pagesPath}o-nas">O nás</a>
                         <a href="${pagesPath}produkty-sluzby">Služby</a>
                     </div>
