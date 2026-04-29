@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Mail, MapPin, Phone } from "lucide-react";
 import { CookiesFooterLink } from "@/components/CookiesFooterLink";
 import { company, navLinks, services } from "@/lib/site-data";
 
@@ -22,7 +22,7 @@ export function Footer() {
               className="grid h-10 w-10 place-items-center rounded-md border border-white/15 text-neutral-200 transition hover:bg-white hover:text-neutral-950"
               aria-label="Facebook KP-WELD"
             >
-              <ExternalLink size={18} aria-hidden="true" />
+              <Facebook size={18} aria-hidden="true" />
             </a>
             <a
               href={company.emailHref}
