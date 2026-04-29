@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-max-w-7xl: 90vw;
+}
+
+.max-w-7xl {
+  max-width: 90vw !important;
+}
+
+
+
+:root {
+  color-scheme: light;
+  --background: #f6f3ee;
+  --foreground: #171717;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: #facc15;
+  color: #171717;
+}

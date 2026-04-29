@@ -1,107 +1,50 @@
 # SMTP2GO Contact Form Setup
 
-This guide explains how to set up the contact form to work with SMTP2GO email service.
+The rebuilt site uses a Next.js route handler at `app/api/contact/route.ts`.
+The contact form posts to `/api/contact`, validates the payload, and sends email
+through SMTP2GO.
 
-## ⚙️ **Setup Steps**
+## Environment Variables
 
-### 1. **SMTP2GO Account Setup**
-1. Go to [SMTP2GO](https://www.smtp2go.com/) and create an account
-2. Verify your domain `kpweld.sk` (optional but recommended)
-3. Get your SMTP credentials from the dashboard
-
-### 2. **Netlify Environment Variables**
-In your Netlify dashboard, go to **Site Settings → Environment Variables** and add:
+Create `.env.local` for local development and add the same values in your hosting
+provider dashboard:
 
 ```bash
-SMTP2GO_API_KEY=api-B62EC962A1534F7AB4C314F802E5FEE0
+SMTP2GO_API_KEY=your-smtp2go-api-key
 SMTP2GO_FROM_EMAIL=noreply@kpweld.sk
 BUSINESS_EMAIL=kpweldsro@gmail.com
 ```
 
-### 3. **Install Dependencies**
+Never commit real API keys to the repository.
+
+## Local Development
+
 ```bash
 npm install
+npm run dev
 ```
 
-### 4. **Local Development**
-For testing locally with Netlify CLI:
+Open `http://127.0.0.1:3000/kontakt` and submit the form after the environment
+variables are configured.
 
-```bash
-# Install Netlify CLI globally
-npm install -g netlify-cli
+## Netlify Deployment
 
-# Create .env file (copy from .env.example)
-cp .env.example .env
+`netlify.toml` is configured for Next.js:
 
-# Add your actual SMTP2GO API key to .env
-# Edit .env file with your credentials
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
 
-# Start local development
-netlify dev
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 ```
 
-### 5. **Deploy to Netlify**
-1. Connect your GitHub repository to Netlify
-2. Set the build settings:
-   - **Build command**: `npm run build` (or leave empty for static site)
-   - **Publish directory**: `.`
-   - **Functions directory**: `netlify/functions`
+Add the SMTP2GO variables in Netlify under Site configuration, then deploy.
 
-3. Add environment variables in Netlify dashboard
-4. Deploy!
+## Troubleshooting
 
-## 📧 **How It Works**
-
-1. User fills out contact form on `/kontakt` page
-2. Form submits to `/.netlify/functions/contact` serverless function
-3. Function validates form data and sends email via SMTP2GO
-4. Business owner receives formatted email at `kpweldsro@gmail.com`
-5. User sees success/error message on the form
-
-## 🎨 **Email Template**
-
-The contact form sends beautifully formatted emails with:
-- Professional KP-WELD branding
-- All contact details (name, email, phone, message)
-- Slovak date/time formatting
-- Clickable email and phone links
-- Clean HTML and text versions
-
-## 🔧 **Form Features**
-
-- ✅ Real-time validation
-- ✅ Slovak language error messages
-- ✅ Loading states with spinner
-- ✅ Privacy policy compliance
-- ✅ Mobile-responsive design
-- ✅ Success/error feedback
-- ✅ GDPR compliant
-
-## 🚨 **Troubleshooting**
-
-### Function Not Working?
-1. Check Netlify Functions logs in dashboard
-2. Verify environment variables are set correctly
-3. Ensure SMTP2GO credentials are valid
-4. Check that domain is verified in SMTP2GO
-
-### Emails Not Being Received?
-1. Check SMTP2GO dashboard for send logs
-2. Verify `BUSINESS_EMAIL` environment variable
-3. Check spam folder
-4. Ensure SMTP2GO account has sending quota
-
-### Local Development Issues?
-1. Make sure `.env` file exists with correct values
-2. Run `netlify dev` instead of regular dev server
-3. Check console for JavaScript errors
-
-## 📞 **Support**
-
-If you need help with setup, contact the development team or refer to:
-- [SMTP2GO Documentation](https://www.smtp2go.com/docs/)
-- [Netlify Functions Documentation](https://docs.netlify.com/functions/overview/)
-
----
-
-**Note**: Never commit actual credentials to the repository. Always use environment variables for sensitive data.
+- Check that `SMTP2GO_API_KEY` is present in the deployment environment.
+- Confirm `SMTP2GO_FROM_EMAIL` is an approved sender in SMTP2GO.
+- Check SMTP2GO activity logs if the form succeeds but email does not arrive.
+- The form falls back to the KP-WELD phone number when email sending fails.
